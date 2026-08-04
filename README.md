@@ -18,8 +18,27 @@ The stack seeds ~3,000 poles across ~48 DTs on first boot. Use **Inject span fau
 
 > **TODO before submission:** deploy and paste the live URL here (e.g. Railway / Render / Fly.io). Note cold-start if on a free tier.
 
-**Live demo:** _pending deploy_  
+**Live demo:** _pending deploy — see [`SUBMISSION.md`](SUBMISSION.md)_  
 **Demo video (5 min):** _pending recording_
+
+## Local without Docker
+
+```bash
+# API
+cd backend
+pip install -r requirements.txt
+set SEED_ON_STARTUP=true
+uvicorn app.main:app --host 127.0.0.1 --port 8000
+
+# UI (other terminal)
+cd frontend
+npm install
+npm run dev
+# open http://localhost:5173 — Vite proxies /api to backend if configured,
+# or set vite proxy target to http://127.0.0.1:8000
+```
+
+Smoke check: `python backend/scripts/smoke_e2e.py`
 
 ## What works
 
