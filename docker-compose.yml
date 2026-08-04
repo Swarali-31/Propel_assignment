@@ -1,0 +1,31 @@
+services:
+  backend:
+    build: ./backend
+    environment:
+      DATA_DIR: /data
+      DATABASE_URL: sqlite:////data/kspdb.db
+      SEED_ON_STARTUP: "true"
+      CORS_ORIGINS: "*"
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4o-mini}
+    volumes:
+      - kspdb_data:/data
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 40s
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  kspdb_data:
