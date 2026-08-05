@@ -1,4 +1,4 @@
-const BASE = "https://propel-assignment-hqu6.onrender.com";
+const BASE = "";
 
 async function req(path, options = {}) {
   const res = await fetch(`${BASE}${path}`, {
