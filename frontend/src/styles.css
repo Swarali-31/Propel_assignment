@@ -351,9 +351,27 @@ select {
 }
 
 .sim {
-  margin-top: 1rem;
-  padding-top: 0.8rem;
-  border-top: 1px dashed var(--line);
+  margin: 0 0 1rem;
+  padding: 0.85rem 0 1rem;
+  border-bottom: 1px dashed var(--line);
+}
+
+.sim-top {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: rgba(22, 38, 31, 0.96);
+  backdrop-filter: blur(6px);
+}
+
+.sim h2 {
+  margin: 0 0 0.35rem;
+  padding: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  font-weight: 700;
 }
 
 .sim p {
