@@ -17,7 +17,7 @@ The stack seeds ~3,000 poles across ~48 DTs on first boot. Use **Inject span fau
 ## Public URL
 **Backend:** https://propel-assignment-hqu6.onrender.com
 **Frontend:** https://propel-assignment-5.onrender.com
-**Demo video (5 min):** _pending recording_
+
 
 ## Local without Docker
 
