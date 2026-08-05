@@ -2,7 +2,7 @@
 
 Newest first.
 
-## 2026-08-1 — SQLite instead of Postgres
+## 2026-08-01 — SQLite instead of Postgres
 
 **Chose:** SQLite + WAL in a Docker volume.  
 **Rejected:** Postgres service in Compose.  
