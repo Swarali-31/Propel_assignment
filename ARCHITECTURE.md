@@ -3,33 +3,111 @@
 ## Diagram
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Segoe UI, Arial, sans-serif",
+    "fontSize": "16px",
+    "primaryTextColor": "#000000",
+    "secondaryTextColor": "#000000",
+    "lineColor": "#555555",
+    "background": "#FFFFFF"
+  }
+}}%%
+
 flowchart LR
-  subgraph field [Field]
-    DEV[Pole IoT devices]
-  end
-  subgraph ingest [Ingest]
-    API["POST /api/telemetry\n(+ batch)"]
-    SEQ[Per-device seq\ndedupe / stale reject]
-    STATE[(Pole energized state)]
-  end
-  subgraph detect [Detect]
-    SCHED[Scheduled outage\nfeed + grace window]
-    LOC[Localization\nlive/dark frontier]
-    GROUP[Group dark component\n→ one ticket]
-  end
-  subgraph ops [Control room]
-    TKT[(Tickets)]
-    UI[Operator console]
-    SIM[Fault simulator]
-    AI[Crew briefing\nLLM or template]
-  end
-  DEV --> API --> SEQ --> STATE
-  STATE --> LOC
-  SCHED --> LOC
-  LOC --> GROUP --> TKT --> UI
-  SIM --> API
-  TKT --> AI
-  STATE -->|restoration| TKT
+
+%%==========================
+%% FIELD
+%%==========================
+
+subgraph field[" Field Infrastructure"]
+    DEV[" Pole IoT Devices"]
+end
+
+%%==========================
+%% INGEST
+%%==========================
+
+subgraph ingest["Telemetry Ingestion"]
+
+    API["POST /api/telemetry<br/>(+ Batch Endpoint)"]
+
+    SEQ["Sequence Validation<br/>Duplicate & Stale Rejection"]
+
+    STATE[("Pole Energized State")]
+
+end
+
+%%==========================
+%% DETECTION
+%%==========================
+
+subgraph detect["Fault Detection & Localization"]
+
+    SCHED[" Scheduled Outage Check"]
+
+    LOC["Localization Engine<br/>Live → Dark Boundary"]
+
+    GROUP["Group Affected Poles<br/>Generate One Ticket"]
+
+end
+
+%%==========================
+%% OPERATOR
+%%==========================
+
+subgraph ops["Control Room"]
+
+    TKT[("Fault Tickets")]
+
+    UI["Operator Console"]
+
+    SIM["Fault Simulator"]
+
+    AI["AI Crew Briefing"]
+
+end
+
+%%==========================
+%% FLOW
+%%==========================
+
+DEV --> API
+API --> SEQ
+SEQ --> STATE
+
+STATE --> LOC
+SCHED --> LOC
+
+LOC --> GROUP
+GROUP --> TKT
+TKT --> UI
+
+SIM --> API
+
+TKT --> AI
+
+STATE -->|Power Restored| TKT
+
+%%==========================
+%% COLORS
+%%==========================
+
+style field fill:#FFF3E0,stroke:#FB8C00,stroke-width:2px,color:#000
+style ingest fill:#E3F2FD,stroke:#1976D2,stroke-width:2px,color:#000
+style detect fill:#FFF8E1,stroke:#FBC02D,stroke-width:2px,color:#000
+style ops fill:#F3E5F5,stroke:#8E24AA,stroke-width:2px,color:#000
+
+classDef fieldNode fill:#FFE0B2,stroke:#FB8C00,color:#000,font-weight:bold;
+classDef ingestNode fill:#BBDEFB,stroke:#1976D2,color:#000,font-weight:bold;
+classDef detectNode fill:#FFF9C4,stroke:#FBC02D,color:#000,font-weight:bold;
+classDef opsNode fill:#E1BEE7,stroke:#8E24AA,color:#000,font-weight:bold;
+
+class DEV fieldNode;
+class API,SEQ,STATE ingestNode;
+class SCHED,LOC,GROUP detectNode;
+class TKT,UI,SIM,AI opsNode;
 ```
 
 ## Data sourcing and ingestion
