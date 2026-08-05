@@ -5,7 +5,7 @@ Control-room system for the fictional **Karnataka State Power Distribution Board
 ## Quick start
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Swarali-31/Propel_assignment
 cd kspdb-outage
 docker compose up --build
 ```
