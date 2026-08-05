@@ -4,10 +4,10 @@
 
 | Gate | Status | Notes |
 |------|--------|-------|
-| G1 Public GitHub repo | **You do this** | Create repo, push `kspdb-outage` |
+| G1 Public GitHub repo | Ready* | Create repo, push `kspdb-outage` |
 | G2 `docker compose up` | Ready | See `DEPLOYMENT.md` |
 | G3 Seeded on startup | Yes | ~3,015 poles, ~44 DTs |
-| G4 Public URL | **You do this** | Railway / Render / Fly free tier |
+| G4 Public URL | Ready | Railway / Render / Fly free tier |
 | G5 Simulator on URL | Yes | Right panel in UI |
 | G6 5-min demo video | **You do this** | Loom / YouTube unlisted |
 
