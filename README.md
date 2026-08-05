@@ -15,10 +15,8 @@ Open **http://localhost:8080** (API on **http://localhost:8000**).
 The stack seeds ~3,000 poles across ~48 DTs on first boot. Use **Inject span fault** in the right-hand simulator panel.
 
 ## Public URL
-
-> **TODO before submission:** deploy and paste the live URL here (e.g. Railway / Render / Fly.io). Note cold-start if on a free tier.
-
-**Live demo:** _pending deploy — see [`SUBMISSION.md`](SUBMISSION.md)_  
+**Backend:** https://propel-assignment-hqu6.onrender.com
+**Frontend:** https://propel-assignment-5.onrender.com
 **Demo video (5 min):** _pending recording_
 
 ## Local without Docker
