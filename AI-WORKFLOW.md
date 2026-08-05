@@ -4,7 +4,7 @@
 
 | Tool | Used for |
 |------|----------|
-| Cursor (Composer) | Majority of scaffolding: FastAPI services, React console, Docker, docs drafts |
+| Cursor (Composer) | FastAPI services, Docker, docs drafts |
 | Manual editing | Localization edge cases, ticket resolve/verify rules, simulator physics knobs, design decisions |
 
 ## What was delegated vs handwritten
